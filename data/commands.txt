@@ -1,0 +1,677 @@
+================================================================
+ CYBERPUNK 2077 — FULL CONSOLE COMMANDS LIST
+ Requires: Cyber Engine Tweaks mod (PC only)
+ Open console: Press ~ (tilde key)
+ Commands are CASE-SENSITIVE. Replace X with your desired value.
+ Always back up your save before using commands!
+================================================================
+
+NOTE: All item commands use the format:
+  Game.AddToInventory("Items.ITEM_NAME", QUANTITY)
+
+================================================================
+ SECTION 1 — GENERAL / PLAYER COMMANDS
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+Game.AddToInventory("Items.money", X)                                                | Adds X Eurodollars (eddies) to your wallet
+Game.SetLevel("Level", X, 1)                                                         | Sets your character level to X (max 60)
+Game.SetLevel("StreetCred", X, 1)                                                    | Sets your Street Cred level to X (max 50)
+Game.ModStatPlayer("Health", "X")                                                    | Sets player's total HP to X
+print(Game.GetPlayer():GetWorldPosition())                                           | Prints V's current map coordinates to console
+Game.LogPlayerPositionAndName()                                                      | Logs player position so you can return to it
+Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=X, y=Y, z=Z, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0}) | Teleport to coordinates X, Y, Z
+
+================================================================
+ SECTION 2 — ATTRIBUTES (STATS)
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("Strength", X)       | Sets Body attribute to X
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("Reflexes", X)       | Sets Reflexes attribute to X
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("TechnicalAbility", X)| Sets Technical Ability attribute to X
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("Intelligence", X)   | Sets Intelligence attribute to X
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):SetAttribute("Cool", X)           | Sets Cool attribute to X
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(X, gamedataDevelopmentPointType.Attribute) | Adds X Attribute (skill) points
+PlayerDevelopmentSystem.GetInstance(Game.GetPlayer()):GetDevelopmentData(Game.GetPlayer()):AddDevelopmentPoints(X, gamedataDevelopmentPointType.Primary)   | Adds X Perk points
+
+================================================================
+ SECTION 3 — AMMUNITION
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+Game.AddToInventory("Ammo.HandgunAmmo", X)                                           | Adds X handgun ammo
+Game.AddToInventory("Ammo.RifleAmmo", X)                                             | Adds X rifle ammo
+Game.AddToInventory("Ammo.ShotgunAmmo", X)                                           | Adds X shotgun ammo
+Game.AddToInventory("Ammo.SniperRifleAmmo", X)                                       | Adds X sniper rifle ammo
+
+================================================================
+ SECTION 4 — CRAFTING MATERIALS
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+Game.AddToInventory("Items.CommonMaterial1", X)                                      | Adds X Common crafting components
+Game.AddToInventory("Items.UncommonMaterial1", X)                                    | Adds X Uncommon crafting components
+Game.AddToInventory("Items.RareMaterial1", X)                                        | Adds X Rare crafting components
+Game.AddToInventory("Items.EpicMaterial1", X)                                        | Adds X Epic crafting components
+Game.AddToInventory("Items.LegendaryMaterial1", X)                                   | Adds X Legendary crafting components
+Game.AddToInventory("Items.LegendaryMaterial2", X)                                   | Adds X Legendary crafting components (type 2)
+Game.AddToInventory("Items.QuickHackCommonMaterial1", X)                             | Adds X Common quickhack components
+Game.AddToInventory("Items.QuickHackUncommonMaterial1", X)                           | Adds X Uncommon quickhack components
+Game.AddToInventory("Items.QuickHackRareMaterial1", X)                               | Adds X Rare quickhack components
+Game.AddToInventory("Items.QuickHackEpicMaterial1", X)                               | Adds X Epic quickhack components
+Game.AddToInventory("Items.QuickHackLegendaryMaterial1", X)                          | Adds X Legendary quickhack components
+Game.AddToInventory("Items.CWCapacityPermaReward_Legendary", 1)                      | Adds a Tier 5 Cyberware Capacity Shard
+
+================================================================
+ SECTION 5 — QUEST / STORY FLAGS
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+Game.GetQuestsSystem():SetFactStr("sq032_johnny_friend", 1)                          | Unlocks the secret ending (Don't Fear the Reaper)
+Game.GetQuestsSystem():SetFactStr("q112_takemura_dead", 0)                           | Makes Takemura alive (if you didn't save him)
+Game.GetQuestsSystem():SetFactStr("q112_takemura_dead", 1)                           | Flags Takemura as dead
+Game.GetQuestsSystem():SetFactStr("mq007_skippy_aim_at_head", 1)                     | Sets Skippy to permanent Headhunter (headshot) mode
+Game.GetQuestsSystem():SetFactStr("mq007_skippy_goes_emo", 0)                        | Prevents Skippy from switching to Puppy Lover mode
+Game.GetQuestsSystem():SetFactStr("q005_jackie_to_hospital", 0)                      | Changes where Jackie was sent (Prologue): Hospital
+Game.GetQuestsSystem():SetFactStr("q005_jackie_to_mama", 0)                          | Changes where Jackie was sent (Prologue): Mama Welles
+Game.GetQuestsSystem():SetFactStr("q005_jackie_stay_notell", 1)                      | Changes where Jackie was sent (Prologue): Kept secret
+Game.SetDebugFact("sq032_johnny_friend", 1)                                          | Alternative syntax: Unlocks secret ending
+Game.SetDebugFact("q112_takemura_dead", 0)                                           | Alternative syntax: Brings back Takemura
+
+================================================================
+ SECTION 6 — SPECIAL / ICONIC WEAPONS
+================================================================
+
+COMMAND                                                                              | WHAT IT DOES
+-------------------------------------------------------------------------------------|----------------------------------------------
+Game.AddToInventory("Items.mq001_scorpions_knife", 1)                                | Adds Scorpion's Knife (Iconic)
+Game.AddToInventory("Items.mq007_skippy", 1)                                         | Adds Skippy smart pistol (Iconic)
+Game.AddToInventory("Items.mq008_golden_knuckledusters", 1)                          | Adds Golden Knuckledusters (Iconic)
+Game.AddToInventory("Items.mq011_wilson_gun", 1)                                     | Adds Wilson's Revolver (Iconic)
+Game.AddToInventory("Items.mq025_buck_gun", 1)                                       | Adds Buck's Shotgun (Iconic)
+Game.AddToInventory("Items.Preset_Silverhand_3516", 1)                               | Adds Johnny Silverhand's Malorian Arms 3516 pistol
+Game.AddToInventory("Items.Preset_Liberty_Rogue", 1)                                 | Adds Rogue's Liberty pistol (Iconic)
+Game.AddToInventory("Items.Preset_Liberty_Dex", 1)                                   | Adds Dex's Liberty pistol (Iconic)
+Game.AddToInventory("Items.Preset_Liberty_Yorinobu", 1)                              | Adds Yorinobu's Liberty pistol (Iconic)
+Game.AddToInventory("Items.Preset_Nue_Jackie", 1)                                    | Adds Jackie's Nue pistol (Iconic)
+Game.AddToInventory("Items.Preset_Nue_Maiko", 1)                                     | Adds Maiko's Nue pistol (Iconic)
+Game.AddToInventory("Items.Preset_Overture_River", 1)                                | Adds River's Overture revolver (Iconic)
+Game.AddToInventory("Items.Preset_Overture_Cassidy", 1)                              | Adds Cassidy's Overture revolver (Iconic)
+Game.AddToInventory("Items.Preset_Overture_Kerry", 1)                                | Adds Kerry's Overture revolver (Iconic)
+Game.AddToInventory("Items.Preset_Grad_Panam", 1)                                    | Adds Panam's Grad (Igla) sniper rifle (Iconic)
+Game.AddToInventory("Items.Preset_Igla_Sovereign", 1)                                | Adds Sovereign (Iconic double-barrel shotgun)
+Game.AddToInventory("Items.Preset_Katana_Cocktail", 1)                               | Adds Cocktail Stick katana (Iconic)
+Game.AddToInventory("Items.Preset_Katana_Saburo", 1)                                 | Adds Saburo Arasaka's katana
+Game.AddToInventory("Items.Preset_Katana_Hiromi", 1)                                 | Adds Hiromi's katana
+Game.AddToInventory("Items.Preset_Nekomata_Breakthrough", 1)                         | Adds Breakthrough sniper rifle (Iconic)
+Game.AddToInventory("Items.Preset_Pulsar_Buzzsaw", 1)                                | Adds Buzzsaw SMG (Iconic)
+Game.AddToInventory("Items.Preset_Copperhead_Genesis", 1)                            | Adds Genesis assault rifle (Iconic)
+Game.AddToInventory("Items.Preset_Masamune_Rogue", 1)                                | Adds Rogue's Masamune assault rifle
+Game.AddToInventory("Items.Preset_Tactician_Headsman", 1)                            | Adds Headsman shotgun (Iconic)
+Game.AddToInventory("Items.Preset_Burya_Comrade", 1)                                 | Adds Comrade's Hammer (Iconic)
+Game.AddToInventory("Items.Preset_Nova_Doom_Doom", 1)                                | Adds Doom Doom revolver (Iconic)
+Game.AddToInventory("Items.Preset_Hammer_Sasquatch", 1)                              | Adds Sasquatch's Hammer (Iconic)
+Game.AddToInventory("Items.Preset_Kenshin_Royce", 1)                                 | Adds Royce's Kenshin pistol (Iconic)
+Game.AddToInventory("Items.Preset_Cane_Fingers", 1)                                  | Adds Fingers' cane (Iconic)
+Game.AddToInventory("Items.Preset_Machete_Maelstrom", 1)                             | Adds Maelstrom machete
+Game.AddToInventory("Items.sq029_rivers_gun", 1)                                     | Adds River's revolver (quest version)
+Game.AddToInventory("Items.sq030_old_gun", 1)                                        | Adds old revolver (quest)
+Game.AddToInventory("Items.sq021_peter_pan_baton", 1)                                | Adds Peter Pan baton (Iconic)
+
+================================================================
+ SECTION 7 — STANDARD WEAPON PRESETS (by type)
+================================================================
+Use: Game.AddToInventory("Items.PRESET_NAME", 1)
+
+PISTOLS
+-----------------------------------------------------------------------------------
+Items.Preset_Lexington_Default       | Standard Lexington pistol
+Items.Preset_Lexington_Wilson        | Wilson's Lexington
+Items.Preset_Lexington_Military      | Military Lexington
+Items.Preset_Kenshin_Default         | Standard Kenshin pistol
+Items.Preset_Kenshin_Military        | Military Kenshin
+Items.Preset_Nue_Default             | Standard Nue pistol
+Items.Preset_Nue_Arasaka             | Arasaka Nue
+Items.Preset_Quasar_Default          | Standard Quasar pistol
+Items.Preset_Quasar_Military         | Military Quasar
+Items.Preset_Omaha_Default           | Standard Omaha pistol
+Items.Preset_Omaha_Military          | Military Omaha
+Items.Preset_Unity_Default           | Standard Unity pistol
+Items.Preset_Unity_Military          | Military Unity
+
+REVOLVERS
+-----------------------------------------------------------------------------------
+Items.Preset_Overture_Default        | Standard Overture revolver
+Items.Preset_Overture_Legendary      | Legendary Overture
+Items.Preset_Burya_Default           | Standard Burya revolver
+Items.Preset_Burya_Military          | Military Burya
+Items.Preset_Nova_Default            | Standard Nova revolver
+Items.Preset_Nova_Military           | Military Nova
+
+SMGs
+-----------------------------------------------------------------------------------
+Items.Preset_Pulsar_Default          | Standard Pulsar SMG
+Items.Preset_Pulsar_Military         | Military Pulsar
+Items.Preset_Dian_Default            | Standard Dian SMG
+Items.Preset_Dian_Yinglong           | Yinglong (Iconic SMG)
+Items.Preset_Shingen_Default         | Standard Shingen SMG
+Items.Preset_Shingen_Prototype       | Shingen Mark V (Iconic)
+Items.Preset_Saratoga_Default        | Standard Saratoga SMG
+Items.Preset_Saratoga_Maelstrom      | Maelstrom Saratoga
+
+ASSAULT RIFLES
+-----------------------------------------------------------------------------------
+Items.Preset_Ajax_Default            | Standard Ajax AR
+Items.Preset_Ajax_Military           | Military Ajax
+Items.Preset_Copperhead_Default      | Standard Copperhead AR
+Items.Preset_Copperhead_Military     | Military Copperhead
+Items.Preset_Defender_Default        | Standard Defender LMG
+Items.Preset_Defender_Military       | Military Defender
+Items.Preset_Masamune_Default        | Standard Masamune AR
+Items.Preset_Masamune_Military       | Military Masamune
+Items.Preset_Sidewinder_Default      | Standard Sidewinder AR
+Items.Preset_Sidewinder_Divided      | Divided We Stand (Iconic)
+Items.Preset_Achilles_Default        | Standard Achilles AR
+Items.Preset_Achilles_Military       | Military Achilles
+
+SHOTGUNS
+-----------------------------------------------------------------------------------
+Items.Preset_Carnage_Default         | Standard Carnage shotgun
+Items.Preset_Carnage_Mox             | Mox shotgun (Iconic)
+Items.Preset_Crusher_Default         | Standard Crusher shotgun
+Items.Preset_Crusher_Military        | Military Crusher
+Items.Preset_Tactician_Default       | Standard Tactician shotgun
+Items.Preset_Tactician_Military      | Military Tactician
+Items.Preset_Satara_Default          | Standard Satara shotgun
+Items.Preset_Satara_Military         | Military Satara
+
+SNIPER RIFLES
+-----------------------------------------------------------------------------------
+Items.Preset_Grad_Default            | Standard Grad sniper
+Items.Preset_Grad_Military           | Military Grad
+Items.Preset_Nekomata_Default        | Standard Nekomata sniper
+Items.Preset_Nekomata_Military       | Military Nekomata
+Items.Preset_Ashura_Default          | Standard Ashura sniper
+Items.Preset_Ashura_Military         | Military Ashura
+Items.Preset_Chao_Default            | Standard Chao sniper
+Items.Preset_Chao_Military           | Military Chao
+
+HEAVY WEAPONS
+-----------------------------------------------------------------------------------
+Items.Preset_HMG_Default             | Standard HMG (Heavy Machine Gun)
+Items.Preset_Igla_Default            | Standard Igla rocket launcher
+Items.Preset_Igla_Military           | Military Igla
+
+MELEE WEAPONS
+-----------------------------------------------------------------------------------
+Items.Preset_Katana_Default          | Standard Katana
+Items.Preset_Katana_Military         | Military Katana
+Items.Preset_Katana_Arasaka_2020     | Arasaka Katana (2020 edition)
+Items.Preset_Katana_GoG              | Mantis Katana (GOG exclusive)
+Items.Preset_Kanabo_Default          | Standard Kanabo club
+Items.Preset_Knife_Default           | Standard Knife
+Items.Preset_Knife_Stinger           | Stinger (Iconic knife)
+Items.Preset_Kukri_Default           | Standard Kukri
+Items.Preset_Kukri_Voodoo            | Voodoo Boys Kukri
+Items.Preset_Machete_Default         | Standard Machete
+Items.Preset_Baton_Alpha             | Baton (Alpha variant)
+Items.Preset_Baton_Tinker_Bell       | Tinker Bell (Iconic baton)
+Items.Preset_Baseball_Bat_Default    | Standard Baseball Bat
+Items.Preset_Baseball_Bat_Denny      | Denny's Baseball Bat (Iconic)
+Items.Preset_Knuckles_Default        | Standard Knuckledusters
+Items.Preset_Knuckles_Golden         | Golden Knuckledusters
+Items.Preset_Hammer_Default          | Standard Hammer
+Items.Preset_Crowbar_Default         | Standard Crowbar
+Items.Preset_Tanto_Default           | Standard Tanto knife
+Items.Preset_Tomahawk_Default        | Standard Tomahawk
+Items.Preset_Cattle_Prod_Tinker_Bell | Tinker Bell Cattle Prod (Iconic)
+Items.Preset_Shovel_Caretaker        | Caretaker's Shovel (Iconic)
+Items.Preset_Dildo_Stout             | Stout (Iconic melee)
+Items.Preset_Pipe_Wrench_Default     | Standard Pipe Wrench
+Items.Preset_Iron_Pipe_Default       | Standard Iron Pipe
+Items.Preset_Tire_Iron_Default       | Standard Tire Iron
+
+================================================================
+ SECTION 8 — GRENADES
+================================================================
+Use: Game.AddToInventory("Items.GRENADE_TYPE", X)
+
+COMMAND                              | WHAT IT DOES
+-------------------------------------|----------------------------------------------
+Items.GrenadeFragRegular             | Standard Frag Grenade
+Items.GrenadeFragHoming              | Homing Frag Grenade
+Items.GrenadeFragSticky              | Sticky Frag Grenade
+Items.GrenadeEMPRegular              | Standard EMP Grenade
+Items.GrenadeEMPHoming               | Homing EMP Grenade
+Items.GrenadeEMPSticky               | Sticky EMP Grenade
+Items.GrenadeIncendiaryRegular       | Standard Incendiary Grenade
+Items.GrenadeIncendiaryHoming        | Homing Incendiary Grenade
+Items.GrenadeIncendiarySticky        | Sticky Incendiary Grenade
+Items.GrenadeFlashRegular            | Standard Flashbang Grenade
+Items.GrenadeFlashHoming             | Homing Flashbang
+Items.GrenadeBiohazardRegular        | Standard Biohazard Grenade
+Items.GrenadeBiohazardHoming         | Homing Biohazard Grenade
+Items.GrenadeCuttingRegular          | Cutting (Explosive) Grenade
+Items.GrenadeReconRegular            | Standard Recon Grenade
+Items.GrenadeReconSticky             | Sticky Recon Grenade
+
+================================================================
+ SECTION 9 — QUICKHACK PROGRAMS
+================================================================
+Use: Game.AddToInventory("Items.PROGRAM_NAME", 1)
+
+COMMAND                                    | WHAT IT DOES
+-------------------------------------------|------------------------------
+Items.BlindProgram                         | Blind (Tier 1)
+Items.BlindLvl2Program                     | Blind (Tier 2)
+Items.BlindLvl3Program                     | Blind (Tier 3)
+Items.BlindLvl4Program                     | Blind (Tier 4)
+Items.BrainMeltLvl2Program                 | Brain Melt (Tier 2)
+Items.BrainMeltLvl3Program                 | Brain Melt (Tier 3)
+Items.BrainMeltLvl4Program                 | Brain Melt (Tier 4)
+Items.CommsCallInProgram                   | Comms: Call In (Tier 1)
+Items.CommsCallInLvl3Program               | Comms: Call In (Tier 3)
+Items.CommsNoiseProgram                    | Comms Noise (Tier 1)
+Items.CommsNoiseLvl2Program                | Comms Noise (Tier 2)
+Items.CommsNoiseLvl3Program                | Comms Noise (Tier 3)
+Items.CommsNoiseLvl4Program                | Comms Noise (Tier 4)
+Items.ContagionProgram                     | Contagion (Tier 1)
+Items.ContagionLvl2Program                 | Contagion (Tier 2)
+Items.ContagionLvl3Program                 | Contagion (Tier 3)
+Items.ContagionLvl4Program                 | Contagion (Tier 4)
+Items.DisableCyberwareProgram              | Disable Cyberware (Tier 1)
+Items.DisableCyberwareLvl2Program          | Disable Cyberware (Tier 2)
+Items.DisableCyberwareLvl3Program          | Disable Cyberware (Tier 3)
+Items.EMPOverloadProgram                   | EMP Overload (Tier 1)
+Items.EMPOverloadLvl2Program               | EMP Overload (Tier 2)
+Items.EMPOverloadLvl3Program               | EMP Overload (Tier 3)
+Items.EMPOverloadLvl4Program               | EMP Overload (Tier 4)
+Items.LocomotionMalfunctionProgram         | Locomotion Malfunction (Tier 1)
+Items.LocomotionMalfunctionLvl2Program     | Locomotion Malfunction (Tier 2)
+Items.LocomotionMalfunctionLvl3Program     | Locomotion Malfunction (Tier 3)
+Items.LocomotionMalfunctionLvl4Program     | Locomotion Malfunction (Tier 4)
+Items.MadnessLvl4Program                   | Madness (Tier 4 — Cyberpsycho)
+Items.MemoryWipeLvl2Program                | Memory Wipe (Tier 2)
+Items.OverheatProgram                      | Overheat (Tier 1)
+Items.OverheatLvl2Program                  | Overheat (Tier 2)
+Items.OverheatLvl3Program                  | Overheat (Tier 3)
+Items.OverheatLvl4Program                  | Overheat (Tier 4)
+Items.WeaponMalfunctionProgram             | Weapon Malfunction (Tier 1)
+Items.WeaponMalfunctionLvl2Program         | Weapon Malfunction (Tier 2)
+Items.WeaponMalfunctionLvl3Program         | Weapon Malfunction (Tier 3)
+Items.WeaponMalfunctionLvl4Program         | Weapon Malfunction (Tier 4)
+Items.WhistleProgram                       | Whistle (Tier 1)
+Items.WhistleLvl2Program                   | Whistle (Tier 2)
+Items.WhistleLvl3Program                   | Whistle (Tier 3)
+
+================================================================
+ SECTION 10 — CYBERWARE
+================================================================
+Use: Game.AddToInventory("Items.CYBERWARE_NAME", 1)
+
+OPERATING SYSTEM / DECKS
+-----------------------------------------------------------------------------------
+Items.FuyutsuiCommonMKI              | Fuyutsui Electronics MK.1 (Cyberdeck)
+Items.FuyutsuiTinkererLegendaryMKIII | Fuyutsui Tinkerer LegendaryMK3 (Iconic deck)
+Items.NetwatchNetdriverLegendaryMKV  | Netwatch Netdriver MK.5 (Iconic deck)
+Items.MilitechParaline               | Militech "Paraline" MK.5 (deck)
+Items.CyberdeckSplinter              | Cyberdeck Splinter
+Items.TetratronicUncommonMKI         | Tetratronic Rippler MK.1
+Items.TetratronicRareMKII            | Tetratronic Rippler MK.2
+Items.TetratronicEpicMKIII           | Tetratronic Rippler MK.3
+Items.TetratronicRipplerLegendaryMKIV| Tetratronic Rippler MK.4 (Iconic)
+Items.RavenEpicMKIII                 | Raven Microcyberneticsm MK.3
+Items.RavenLegendaryMKIV             | Raven Microcybernetics MK.4 (Iconic)
+Items.ArasakaEpicMKIII               | Arasaka Software MK.3
+Items.ArasakaLegendaryMKIV           | Arasaka Software MK.4 (Iconic)
+Items.StephensonRareMKII             | Stephenson Tech MK.2
+Items.StephensonEpicMKIII            | Stephenson Tech MK.3
+Items.StephensonLegendaryMKIV        | Stephenson Tech MK.4 (Iconic)
+Items.SeachoUncommonMKI              | Seacho Netwatch MK.1
+Items.SeachoRareMKII                 | Seacho Netwatch MK.2
+Items.BioDyneUncommonMKI             | BioDyne MK.1
+Items.BioDyneRareMKII                | BioDyne MK.2
+Items.BiotechUncommonMKI             | Biotech Sigma MK.1
+Items.BiotechRareMKII                | Biotech Sigma MK.2
+Items.BiotechEpicMKIII               | Biotech Sigma MK.3
+
+SANDEVISTANS
+-----------------------------------------------------------------------------------
+Items.SandevistanC1MK1               | Dynalar Sandevistan MK.1
+Items.SandevistanC1MK2               | Dynalar Sandevistan MK.2
+Items.SandevistanC1MK3               | Dynalar Sandevistan MK.3
+Items.SandevistanC2MK1               | Militech "Apogee" MK.1
+Items.SandevistanC2MK2               | Militech "Apogee" MK.2
+Items.SandevistanC2MK3               | Militech "Apogee" MK.3
+Items.SandevistanC2MK4               | Militech "Apogee" MK.4
+Items.SandevistanC3MK4               | Zetatech Sandevistan MK.4
+Items.SandevistanC3MK5               | Zetatech Sandevistan MK.5
+Items.SandevistanC4MK5               | QianT Sandevistan MK.5 (Iconic)
+
+NERVOUS SYSTEM
+-----------------------------------------------------------------------------------
+Items.KerenzikovCommon               | Kerenzikov (Common)
+Items.KerenzikovUncommon             | Kerenzikov (Uncommon)
+Items.KerenzikovRare                 | Kerenzikov (Rare)
+Items.KerenzikovEpic                 | Kerenzikov (Epic)
+Items.KerenzikovLegendary            | Kerenzikov (Legendary)
+Items.SynapticAcceleratorCommon      | Synaptic Accelerator (Common)
+Items.SynapticAcceleratorUncommon    | Synaptic Accelerator (Uncommon)
+Items.SynapticAcceleratorRare        | Synaptic Accelerator (Rare)
+Items.SynapticAcceleratorEpic        | Synaptic Accelerator (Epic)
+Items.SynapticAcceleratorLegendary   | Synaptic Accelerator (Legendary)
+Items.ReflexRecorderCommon           | Reflex Recorder (Common)
+Items.ReflexRecorderUncommon         | Reflex Recorder (Uncommon)
+Items.ReflexRecorderRare             | Reflex Recorder (Rare)
+Items.ReflexRecorderLegendary        | Reflex Recorder (Legendary)
+Items.BioConductorsRare              | BioConductors (Rare)
+Items.BioConductorsEpic              | BioConductors (Epic)
+Items.BioConductorsLegendary         | BioConductors (Legendary)
+Items.NervousSystemDischarge         | Nervous System Discharge
+Items.ImprovedReactionUncommon       | Improved Reaction Time (Uncommon)
+Items.ImprovedReactionRare           | Improved Reaction Time (Rare)
+Items.ImprovedReactionEpic           | Improved Reaction Time (Epic)
+
+CIRCULATORY SYSTEM
+-----------------------------------------------------------------------------------
+Items.BloodPumpCommon                | Blood Pump (Common)
+Items.BloodPumpUncommon              | Blood Pump (Uncommon)
+Items.BloodPumpRare                  | Blood Pump (Rare)
+Items.BloodPumpEpic                  | Blood Pump (Epic)
+Items.SecondHeart                    | Second Heart (Legendary — extra life)
+Items.HealOnKillCommon               | Heal-on-Kill (Common)
+Items.HealOnKillUncommon             | Heal-on-Kill (Uncommon)
+Items.HealOnKillEpic                 | Heal-on-Kill (Epic)
+Items.HealOnKillLegendary            | Heal-on-Kill (Legendary)
+Items.HealthMonitorCommon            | Health Monitor (Common)
+Items.HealthMonitorUncommon          | Health Monitor (Uncommon)
+Items.HealthMonitorRare              | Health Monitor (Rare)
+Items.HealthMonitorEpic              | Health Monitor (Epic)
+Items.HealthMonitorLegendary         | Health Monitor (Legendary)
+Items.EnhancedBloodVesselsCommon     | Enhanced Blood Vessels (Common)
+Items.EnhancedBloodVesselsUncommon   | Enhanced Blood Vessels (Uncommon)
+Items.EnhancedBloodVesselsRare       | Enhanced Blood Vessels (Rare)
+Items.EnhancedBloodVesselsEpic       | Enhanced Blood Vessels (Epic)
+Items.EnhancedBloodVesselsLegendary  | Enhanced Blood Vessels (Legendary)
+Items.ReverseMetabolicEnhancer       | Reverse Metabolic Enhancer
+
+INTEGUMENTARY SYSTEM (ARMOR/SKIN)
+-----------------------------------------------------------------------------------
+Items.SubdermalArmorCommon           | Subdermal Armor (Common)
+Items.SubdermalArmorUncommon         | Subdermal Armor (Uncommon)
+Items.SubdermalArmorRare             | Subdermal Armor (Rare)
+Items.SubdermalArmorEpic             | Subdermal Armor (Epic)
+Items.SubdermalArmorLegendary        | Subdermal Armor (Legendary)
+Items.MetalPlating                   | Metal Plating
+Items.TitaniumPlating                | Titanium Plating
+Items.NeoplasticPlating              | Neoplastic Plating
+Items.MetalCoveredSkin               | Metal-Covered Skin
+Items.NeoFiberCommon                 | NeoFiber (Common)
+Items.NeoFiberUncommon               | NeoFiber (Uncommon)
+Items.NeoFiberRare                   | NeoFiber (Rare)
+Items.NeoFiberEpic                   | NeoFiber (Epic)
+Items.NeoFiberLegendary              | NeoFiber (Legendary)
+Items.EnhancedTissueCommon           | Enhanced Tissue (Common)
+Items.EnhancedTissueUncommon         | Enhanced Tissue (Uncommon)
+Items.EnhancedTissueRare             | Enhanced Tissue (Rare)
+Items.EnhancedTissueEpic             | Enhanced Tissue (Epic)
+Items.EnhancedTissueLegendary        | Enhanced Tissue (Legendary)
+Items.GroundingPlating               | Grounding Plating
+
+SKELETON (BODY UPGRADES)
+-----------------------------------------------------------------------------------
+Items.TitaniumInfusedBonesCommon     | Titanium Bones (Common)
+Items.TitaniumInfusedBonesUncommon   | Titanium Bones (Uncommon)
+Items.TitaniumInfusedBonesRare       | Titanium Bones (Rare)
+Items.BonesMcCoy70V0                 | Gorilla Arms (Base)
+Items.BonesMcCoy70V1                 | Gorilla Arms (Uncommon)
+Items.BonesMcCoy70V2                 | Gorilla Arms (Rare)
+Items.StrongArmsEpic                 | Gorilla Arms (Epic)
+Items.StrongArmsLegendary            | Gorilla Arms (Legendary)
+Items.AnimalsStrongArmsBattery1      | Animals Gorilla Arms Battery Mod
+Items.AnimalsStrongArmsKnuckles1     | Animals Gorilla Arms Knuckle Mod
+Items.DenseMarrowUncommon            | Dense Marrow (Uncommon)
+Items.DenseMarrowRare                | Dense Marrow (Rare)
+Items.DenseMarrowEpic                | Dense Marrow (Epic)
+Items.ReinforcedMusclesRare          | Reinforced Muscles (Rare)
+Items.ReinforcedMusclesEpic          | Reinforced Muscles (Epic)
+Items.BoostedTendonsRare             | Boosted Tendons (Rare — double jump)
+Items.EndoskeletonCommon             | Endoskeleton (Common)
+Items.EndoskeletonUncommon           | Endoskeleton (Uncommon)
+Items.EndoskeletonRare               | Endoskeleton (Rare)
+Items.EndoskeletonEpic               | Endoskeleton (Epic)
+Items.EndoskeletonLegendary          | Endoskeleton (Legendary)
+Items.CarryCapacityBooster           | Carry Capacity Booster
+
+OCULAR SYSTEM
+-----------------------------------------------------------------------------------
+Items.KiroshiOpticsRare              | Kiroshi Optics MK.2 (Rare)
+Items.KiroshiOpticsEpic              | Kiroshi Optics MK.3 (Epic)
+Items.LimbicSystemEnhancementCommon  | Limbic System Enhancement (Common)
+Items.LimbicSystemEnhancementRare    | Limbic System Enhancement (Rare)
+Items.LimbicSystemEnhancementLegendary| Limbic System Enhancement (Legendary)
+Items.ImprovedPerceptionCommon       | Improved Visual Perception (Common)
+Items.ImprovedPerceptionUncommon     | Improved Visual Perception (Uncommon)
+Items.ImprovedPerceptionEpic         | Improved Visual Perception (Epic)
+Items.ImprovedPerceptionLegendary    | Improved Visual Perception (Legendary)
+
+HANDS / SPECIAL SYSTEMS
+-----------------------------------------------------------------------------------
+Items.MantisBladesEpic               | Mantis Blades (Epic)
+Items.MantisBladesLegendary          | Mantis Blades (Legendary)
+Items.TygerClawsMantisBladesRotor1   | Tyger Claws Mantis Blades Mod
+Items.ProjectileLauncher             | Projectile Launcher (Uncommon)
+Items.ProjectileLauncherEpic         | Projectile Launcher (Epic)
+Items.ProjectileLauncherLegendary    | Projectile Launcher (Legendary)
+Items.NanoWiresLegendary             | Monowire (Legendary)
+Items.SmartLinkLegendary             | Smart Link (Legendary)
+Items.PowerGripLegendary             | Power Grip (Legendary)
+Items.OpticalCamoRare                | Optical Camo (Rare — invisibility)
+Items.OpticalCamoEpic                | Optical Camo (Epic)
+Items.OpticalCamoLegendary           | Optical Camo (Legendary)
+Items.DischargeConnectorRare         | Discharge Connector (Rare)
+Items.DischargeConnectorEpic         | Discharge Connector (Epic)
+Items.DischargeConnectorLegendary    | Discharge Connector (Legendary)
+Items.ElectroshockMechanismCommon    | Electroshock Mechanism (Common)
+Items.ElectroshockMechanismUncommon  | Electroshock Mechanism (Uncommon)
+Items.ElectroshockMechanismEpic      | Electroshock Mechanism (Epic)
+Items.ElectroshockMechanismLegendary | Electroshock Mechanism (Legendary)
+Items.ReversePowerInductor           | Reverse Power Inductor
+Items.MicroGeneratorCommon           | Micro-Generator (Common)
+Items.MicroGeneratorUncommon         | Micro-Generator (Uncommon)
+Items.MicroGeneratorRare             | Micro-Generator (Rare)
+Items.MicroGeneratorEpic             | Micro-Generator (Epic)
+Items.MicroGeneratorLegendary        | Micro-Generator (Legendary)
+Items.MicroVibrationsGeneratorUncommon| Micro-Vibrations Generator (Uncommon)
+Items.MicroVibrationsGeneratorRare   | Micro-Vibrations Generator (Rare)
+Items.MicroVibrationsGeneratorEpic   | Micro-Vibrations Generator (Epic)
+Items.IronLungsCommon                | Iron Lungs (Common)
+Items.IronLungsUncommon              | Iron Lungs (Uncommon)
+Items.IronLungsRare                  | Iron Lungs (Rare)
+Items.IronLungsEpic                  | Iron Lungs (Epic)
+Items.IronLungsLegendary             | Iron Lungs (Legendary)
+Items.StaminaRegenBoosterCommon      | Stamina Regen Booster (Common)
+Items.StaminaRegenBoosterUncommon    | Stamina Regen Booster (Uncommon)
+Items.StaminaRegenBoosterRare        | Stamina Regen Booster (Rare)
+Items.StaminaRegenBoosterEpic        | Stamina Regen Booster (Epic)
+Items.StaminaRegenBoosterLegendary   | Stamina Regen Booster (Legendary)
+Items.ResistancesBoosterCommon       | Resistances Booster (Common)
+Items.ResistancesBoosterUncommon     | Resistances Booster (Uncommon)
+Items.ResistancesBoosterEpic         | Resistances Booster (Epic)
+Items.ResistancesBoosterLegendary    | Resistances Booster (Legendary)
+Items.BrainCapacityBoosterRare       | Brain Capacity Booster (Rare)
+Items.BrainCapacityBoosterEpic       | Brain Capacity Booster (Epic)
+Items.BrainCapacityBoosterLegendary  | Brain Capacity Booster (Legendary)
+Items.RoboticCoreCommon              | Robotic Core (Common)
+Items.RoboticCoreUncommon            | Robotic Core (Uncommon)
+Items.RoboticCoreRare                | Robotic Core (Rare)
+Items.RoboticCoreEpic                | Robotic Core (Epic)
+Items.RoboticCoreLegendary           | Robotic Core (Legendary)
+Items.CyberRotorsCommon              | Cyber Rotors (Common — air dash)
+Items.CyberRotorsUncommon            | Cyber Rotors (Uncommon)
+Items.CyberRotorsRare                | Cyber Rotors (Rare)
+Items.CyberRotorsEpic                | Cyber Rotors (Epic)
+Items.CyberRotorsLegendary           | Cyber Rotors (Legendary)
+Items.MemoryBoostCommon              | Memory Boost (Common)
+Items.MemoryBoostUncommon            | Memory Boost (Uncommon)
+Items.MemoryBoostRare                | Memory Boost (Rare)
+Items.MemoryBoostEpic                | Memory Boost (Epic)
+Items.MemoryReplenishmentEpic        | Memory Replenishment (Epic)
+Items.MemoryReplenishmentLegendary   | Memory Replenishment (Legendary)
+Items.FastAccessMemoryCommon         | Fast Access Memory (Common)
+Items.FastAccessMemoryUncommon       | Fast Access Memory (Uncommon)
+Items.FastAccessMemoryRare           | Fast Access Memory (Rare)
+Items.TyrosineInjector
+
+FRONTAL CORTEX — COOLDOWN REDUCTION (Newton Module & Axolotl)
+-----------------------------------------------------------------------------------
+Items.AdvancedSubdermalCoProcessorCommon      | Newton Module Tier 1 (Common) — small CW cooldown reduction on kill
+Items.AdvancedSubdermalCoProcessorUncommon    | Newton Module Tier 2 (Uncommon)
+Items.AdvancedSubdermalCoProcessorRare        | Newton Module Tier 3 (Rare)
+Items.AdvancedSubdermalCoProcessorEpic        | Newton Module Tier 4 (Epic)
+Items.AdvancedSubdermalCoProcessorLegendary   | Newton Module Tier 5 (Legendary) — best non-Iconic
+Items.IconicAdvancedSubdermalCoProcessorLegendaryPlusPlus | AXOLOTL (Iconic) — -7.5% CW cooldown on kill (PHANTOM LIBERTY REQUIRED)               | Tyrosine Injector
+
+PROJECTILE LAUNCHER AMMO TYPES
+-----------------------------------------------------------------------------------
+Items.MilitechProjectileLauncherRound1| Militech Launcher Round
+Items.TranquilizerRound              | Tranquilizer Dart Round
+Items.ExplosiveDamageRound           | Explosive Damage Round
+Items.ElectricDamageRound            | Electric Damage Round
+Items.ThermalDamageRound             | Thermal Damage Round
+Items.ChemicalDamageRound            | Chemical Damage Round
+Items.PhysicalDamageRound            | Physical Damage Round
+
+GORILLA ARMS DAMAGE MODS
+-----------------------------------------------------------------------------------
+Items.ElectricDamageKnuckles         | Electric Knuckles Mod
+Items.ThermalDamageKnuckles          | Thermal Knuckles Mod
+Items.ChemicalDamageKnuckles         | Chemical Knuckles Mod
+Items.PhysicalDamageKnuckles         | Physical Knuckles Mod
+Items.ElectricDamageEdge             | Electric Edge Mod
+Items.ThermalDamageEdge              | Thermal Edge Mod
+Items.ChemicalDamageEdge             | Chemical Edge Mod
+Items.PhysicalDamageEdge             | Physical Edge Mod
+Items.ElectricDamageCable            | Electric Cable Mod (Monowire)
+Items.ThermalDamageCable             | Thermal Cable Mod (Monowire)
+Items.ChemicalDamageCable            | Chemical Cable Mod (Monowire)
+Items.PhysicalDamageCable            | Physical Cable Mod (Monowire)
+
+================================================================
+ SECTION 11 — JOHNNY SILVERHAND'S OUTFIT
+================================================================
+Use: Game.AddToInventory("Items.ITEM_NAME", 1)
+
+COMMAND                              | WHAT IT DOES
+-------------------------------------|----------------------------------------------
+Items.Q005_Johnny_Glasses            | Johnny's Aviator Sunglasses
+Items.Q005_Johnny_Shirt              | Johnny's Black Samurai T-Shirt
+Items.Q005_Johnny_Pants              | Johnny's Black Slim-Fit Pants
+Items.Q005_Johnny_Shoes              | Johnny's Black Leather Boots
+Items.SQ031_Samurai_Jacket           | Replica of Johnny's Samurai Jacket
+Items.Preset_Silverhand_3516         | Johnny's Malorian Arms 3516 Pistol
+Items.sq032_dogtags                  | Johnny's Dog Tags
+
+================================================================
+ SECTION 12 — CLASS / LIFEPATH OUTFITS
+================================================================
+
+COMMAND                              | WHAT IT DOES
+-------------------------------------|----------------------------------------------
+Items.Q000_Corpo                     | Full Corpo starting outfit
+Items.Q000_Corpo_FormalJacket        | Corpo formal jacket
+Items.Q000_Corpo_FormalPants         | Corpo formal pants
+Items.Q000_Corpo_FormalShoes         | Corpo formal shoes
+Items.Q000_Nomad                     | Full Nomad starting outfit
+Items.Q000_Nomad_Vest                | Nomad vest
+Items.Q000_Nomad_Pants               | Nomad pants
+Items.Q000_Nomad_Boots               | Nomad boots
+Items.Q000_Nomad_TShirt              | Nomad t-shirt
+Items.Q000_StreetKid                 | Full Street Kid starting outfit
+Items.Q000_StreetKid_Pants           | Street Kid pants
+Items.Q000_StreetKid_Shoes           | Street Kid shoes
+Items.Q000_StreetKid_TShirt          | Street Kid t-shirt
+
+================================================================
+ SECTION 13 — QUEST-SPECIFIC & SPECIAL OUTFITS
+================================================================
+
+COMMAND                                  | WHAT IT DOES
+-----------------------------------------|---------------------------------------------
+Items.Q101_Tracksuit_Jacket              | Tracksuit Jacket (from Heist prologue)
+Items.Q101_Tracksuit_Pants               | Tracksuit Pants
+Items.Q114_Aldecaldo_Jacket              | Aldecaldo Jacket
+Items.Q114_Cyberspace_Jumpsuit           | Alt's Cyberspace Jumpsuit
+Items.Q115_Afterlife_Netrunner           | Afterlife Netrunner suit (ending)
+Items.Q115_Custom_Predator_Armor         | Arasaka Predator Armor (ending)
+Items.Q115_Custom_Predator_Boots         | Arasaka Predator Boots
+Items.Q201_SpaceHospitalPants            | Space Hospital Pants (Phantom Liberty)
+Items.Q201_SpaceHospitalShirt            | Space Hospital Shirt (Phantom Liberty)
+Items.SQ030_Diving_Suit                  | Diving Suit
+Items.SQ030_MaxTac_Chest                 | MaxTac Armor Chest
+Items.SQ030_MaxTac_Helmet                | MaxTac Helmet
+Items.SQ030_MaxTac_Pants                 | MaxTac Pants
+Items.SQ004_RaffenShiv_Mask              | Raffen Shiv Mask
+Items.SQ012_Shirt_VoteForPeralez         | "Vote For Peralez" Campaign Shirt
+Items.SQ021_Lab_Costume                  | Judy's VR Lab Costume
+Items.SQ021_Wraiths_Vest                 | Wraiths Gang Vest
+Items.SQ023_Joshua_Prisonwear            | Joshua Stephenson's Prison Outfit
+Items.SQ023_Switchblade_Pants            | Switchblade Pants
+Items.SQ023_Switchblade_Shirt            | Switchblade Shirt
+Items.SQ029_Police_Suit                  | NCPD Police Suit
+Items.SQ029_River_Romance_Shirt          | River's Romance Shirt
+Items.SQ031_Samurai_Jacket               | Replica Samurai Jacket (Johnny's)
+Items.MQ017_Samerai_Jacket               | Original Samurai Jacket (from MQ017)
+Items.Q203_Spacesuit_Outfit_WithHelmet   | Mikoshi Spacesuit with Helmet
+Items.Q203_Spacesuit_Outfit_NoHelmet     | Mikoshi Spacesuit without Helmet
+Items.Q203_Spacesuit_Helmet              | Mikoshi Helmet only
+Items.Q203_Epilogue_TShirt               | Epilogue T-Shirt
+Items.Q203_Epilogue_Pants                | Epilogue Pants
+Items.Q203_Epilogue_Boots                | Epilogue Boots
+Items.Q203_Epilogue_Glasses              | Epilogue Glasses
+Items.GOG_DLC_Jacket                     | GOG DLC Jacket
+Items.GOG_DLC_TShirt                     | GOG DLC T-Shirt
+Items.GOG_Galaxy_TShirt                  | GOG Galaxy T-Shirt
+Items.SamuraiWorldTour_TShirt            | Samurai World Tour T-Shirt
+
+================================================================
+ SECTION 14 — POPULAR TELEPORT COORDINATES
+================================================================
+Use: Game.GetTeleportationFacility():Teleport(GetPlayer(), ToVector4{x=X, y=Y, z=Z, w=1}, ToEulerAngles{roll=0, pitch=0, yaw=0})
+
+LOCATION                            | X            | Y            | Z
+------------------------------------|--------------|--------------|--------
+V's Apartment (Megabuilding H10)    | -823.92      | -1216.7      | 22.93
+Afterlife Bar                       | 1132.87      | -1161.7      | 8.02
+Arasaka Tower (exterior)            | 680.66       | -659.26      | 5.0
+Misty's Esoterica                   | -861.2       | -1265.0      | 8.0
+Tom's Diner                         | 862.48       | -1006.0      | 8.4
+Rogue's Ranch (Badlands)            | 1272.7       | 2200.5       | 14.5
+Panam's Camp (Aldecaldos)           | 2062.4       | 2448.0       | 7.5
+Dogtown (Phantom Liberty area)      | -2100.0      | 2700.0       | 10.0
+
+================================================================
+ TIPS AND NOTES
+================================================================
+
+- Commands are CASE-SENSITIVE — type them exactly as shown.
+- Replace X with your desired number value.
+- All item spawns use: Game.AddToInventory("Items.ITEM_NAME", QUANTITY)
+- Commands must be run on foot — they do NOT work inside vehicles.
+- Always back up your save file before using commands.
+- For quest flag commands, use SetFactStr for Patch 2.0+ and
+  SetDebugFact as an alternative syntax (both work similarly).
+- The full master spreadsheet of all commands is maintained at:
+  https://1drv.ms/x/s!ArM35g0UkWjvjcVPT-fhFPPCZUfDLw?e=BOxScl
+- For vehicle spawn commands, visit:
+  https://wiki.redmodding.org/cyber-engine-tweaks
+
+================================================================
+ END OF FILE — Cyberpunk 2077 Console Commands
+================================================================
