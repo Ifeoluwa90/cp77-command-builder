@@ -2,10 +2,10 @@
 
 A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** console commands for Cyberpunk 2077. Search, select, and generate multi-item command blocks with one click - no more typing commands manually.
 
-![screenshot](docs/screenshot.png)
-![screenshot](docs/screenshot1.png)
-![screenshot](docs/screenshot2.png)
-![screenshot](docs/screenshot3.png)
+![screenshot](docs/Screenshot.png)
+![screenshot](docs/Screenshot1.png)
+![screenshot](docs/Screenshot2.png)
+![screenshot](docs/Screenshot3.png)
 
 ---
 
