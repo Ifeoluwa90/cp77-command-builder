@@ -1,22 +1,41 @@
 # CP2077 Command Builder
 
-A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** console commands for Cyberpunk 2077. Search, select, and generate multi-item command blocks with one click - no more typing commands manually.
+Command List Reference: https://www.nexusmods.com/cyberpunk2077/mods/3129?tab=posts
 
-![screenshot](docs/Screenshot.png)
-![screenshot](docs/Screenshot1.png)
-![screenshot](docs/Screenshot2.png)
-![screenshot](docs/Screenshot3.png)
+A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** console commands for Cyberpunk 2077. Search, select, and generate multi-item command blocks with one click — no more typing commands manually.
+
+![screenshot](docs/screenshot.png)
 
 ---
 
 ## Features
 
-- **492 commands** across 14 sections - fully parsed from a plain-text data file
-- **Sections collapsed by default** - only expands what you open, so it never feels overwhelming
-- **Live search** - type any keyword and matching items auto-expand across all sections
-- **Multi-select** - tick as many items as you want, set your quantity, hit Generate
-- **One-click copy** - paste the whole block straight into CET in-game
-- **No install, no dependencies** - single HTML file, works offline in any browser
+- **6,976 commands** across 13 sections — parsed directly from the community Excel spreadsheet
+- **Sections collapsed by default** — only expands what you open, nothing overwhelming
+- **Live search** — type any keyword and matching items auto-expand across all sections
+- **Multi-select** — tick as many items as you want, set your quantity, hit Generate
+- **One-click copy** — paste the whole block straight into CET in-game
+- **No install, no dependencies** — single HTML file, works offline in any browser
+
+---
+
+## Sections
+
+| Section | Commands |
+|---|---|
+| Weapons | 1,464 |
+| Grenades | 76 |
+| Weapon Mods | 279 |
+| Cyberware | 1,401 |
+| Quickhacks | 79 |
+| Clothing | 1,826 |
+| Clothing Outfit Sets | 65 |
+| Crafting & Recipes | 935 |
+| Consumables | 190 |
+| Vehicles | 85 |
+| Teleport Locations | 423 |
+| Progression | 30 |
+| Misc Commands | 123 |
 
 ---
 
@@ -28,15 +47,16 @@ A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** cons
 index.html   ← open this in any browser
 ```
 
-### Option B — Rebuild from source (after editing the data file)
+### Option B — Rebuild from the Excel source
 
-Requires Python 3.6+, no third-party packages needed.
+Requires Python 3.6+ and openpyxl.
 
 ```bash
+pip install openpyxl
 python src/build.py
 ```
 
-This parses `data/commands.txt` and regenerates `index.html`.
+This parses `data/Cyberpunk_2077_Items.xlsx` and regenerates `index.html`.
 
 ---
 
@@ -44,40 +64,31 @@ This parses `data/commands.txt` and regenerates `index.html`.
 
 ```
 cp77-command-builder/
-├── index.html                  # The ready-to-use tool (open in browser)
+├── index.html                       # The ready-to-use tool (open in browser)
 ├── data/
-│   └── commands.txt            # All commands in human-readable table format
+│   └── Cyberpunk_2077_Items.xlsx    # Source spreadsheet — edit this to add commands
 ├── src/
-│   └── build.py                # Parser — reads commands.txt, generates index.html
+│   └── build.py                     # Parser — reads xlsx, generates index.html
 ├── docs/
-│   └── screenshot.png          # Screenshot for README
+│   └── screenshot.png               # Screenshot for README
 ├── .gitignore
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── LICENSE
 └── README.md
 ```
 
 ---
 
-## Adding or Editing Commands
+## Updating Commands
 
-All commands live in **`data/commands.txt`** in a simple pipe-separated table format:
+Drop a new version of `Cyberpunk_2077_Items.xlsx` into the `data/` folder and run:
 
-```
-================================================================
- SECTION N — YOUR SECTION NAME
-================================================================
-
-COMMAND                              | WHAT IT DOES
--------------------------------------|----------------------------------------------
-Game.AddToInventory("Items.Foo", 1)  | Description of what this gives you
-Items.Bar                            | Another item (quantity defaults to 1)
+```bash
+python src/build.py
 ```
 
-After editing, run `python src/build.py` to regenerate `index.html`.
-
-> The parser handles three line formats automatically:
-> - `Game.AddToInventory("Items.X", N) | description`
-> - `Items.X | description` (bare item ID — quantity defaults to 1)
-> - `Game.SomeOtherCommand(...) | description` (non-inventory commands)
+That's it. The HTML regenerates automatically with the new data.
 
 ---
 
@@ -85,7 +96,7 @@ After editing, run `python src/build.py` to regenerate `index.html`.
 
 - **In-game**: [Cyber Engine Tweaks](https://www.nexusmods.com/cyberpunk2077/mods/107) mod installed (PC only)
 - **This tool**: Any modern browser — Chrome, Firefox, Edge, Safari
-- **Rebuilding**: Python 3.6+ (standard library only)
+- **Rebuilding**: Python 3.6+ with `openpyxl` (`pip install openpyxl`)
 
 ---
 
@@ -98,14 +109,12 @@ Console commands require the **Cyber Engine Tweaks** mod and only work on **PC**
 ## Contributing
 
 1. Fork the repo
-2. Edit `data/commands.txt` to add or fix commands
+2. Update `data/Cyberpunk_2077_Items.xlsx` with new or corrected commands
 3. Run `python src/build.py` to verify it builds cleanly
-4. Open a PR with a description of what you added/changed
-
-Found a wrong item ID or missing command? Open an issue!
+4. Open a PR describing what changed
 
 ---
 
 ## License
 
-MIT - free to use, modify, and share.
+MIT — free to use, modify, and share.
