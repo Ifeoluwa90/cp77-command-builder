@@ -13,12 +13,12 @@ A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** cons
 
 ## Features
 
-- **6,976 commands** across 13 sections — parsed directly from the community Excel spreadsheet
-- **Sections collapsed by default** — only expands what you open, nothing overwhelming
-- **Live search** — type any keyword and matching items auto-expand across all sections
-- **Multi-select** — tick as many items as you want, set your quantity, hit Generate
-- **One-click copy** — paste the whole block straight into CET in-game
-- **No install, no dependencies** — single HTML file, works offline in any browser
+- **6,976 commands** across 13 sections - parsed directly from the community Excel spreadsheet
+- **Sections collapsed by default** - only expands what you open, nothing overwhelming
+- **Live search** - type any keyword and matching items auto-expand across all sections
+- **Multi-select** - tick as many items as you want, set your quantity, hit Generate
+- **One-click copy** - paste the whole block straight into CET in-game
+- **No install, no dependencies** - single HTML file, works offline in any browser
 
 ---
 
@@ -44,13 +44,13 @@ A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** cons
 
 ## Usage
 
-### Option A — Just open the HTML (no build needed)
+### Option A - Just open the HTML (no build needed)
 
 ```
 index.html   ← open this in any browser
 ```
 
-### Option B — Rebuild from the Excel source
+### Option B - Rebuild from the Excel source
 
 Requires Python 3.6+ and openpyxl.
 
@@ -98,7 +98,7 @@ That's it. The HTML regenerates automatically with the new data.
 ## Requirements
 
 - **In-game**: [Cyber Engine Tweaks](https://www.nexusmods.com/cyberpunk2077/mods/107) mod installed (PC only)
-- **This tool**: Any modern browser — Chrome, Firefox, Edge, Safari
+- **This tool**: Any modern browser - Chrome, Firefox, Edge, Safari
 - **Rebuilding**: Python 3.6+ with `openpyxl` (`pip install openpyxl`)
 
 ---
@@ -120,4 +120,4 @@ Console commands require the **Cyber Engine Tweaks** mod and only work on **PC**
 
 ## License
 
-MIT — free to use, modify, and share.
+MIT - free to use, modify, and share.
