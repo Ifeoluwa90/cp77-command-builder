@@ -1,6 +1,6 @@
 # CP2077 Command Builder
 
-Command List Reference: https://www.nexusmods.com/cyberpunk2077/mods/3129?tab=posts
+Command List Reference: [Cyberware console list](https://www.nexusmods.com/cyberpunk2077/mods/3129?tab=posts)
 
 A browser-based tool for building and copying **Cyber Engine Tweaks (CET)** console commands for Cyberpunk 2077. Search, select, and generate multi-item command blocks with one click — no more typing commands manually.
 
